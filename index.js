@@ -1,12 +1,16 @@
 // make index.js then npm init then npm install express
+// when adding cookies give cmd npm install cookie-parser
 
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
-
 const expressLayouts = require('express-ejs-layouts');
-
 const db = require('./config/mongoose');
+
+app.use(express.urlencoded());
+
+app.use(cookieParser());
 
 app.use(express.static('./assets'));
 
