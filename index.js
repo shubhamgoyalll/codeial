@@ -36,8 +36,17 @@ app.use(session({
     resave : false,
     cookie : {
         maxAge : (1000 * 60 * 100 )
-    }
-}));
+    },
+    store : new MongoStore(
+        {
+            mongooseConnection : db,
+            autoRemove : 'disabled'
+        },
+        function(err){
+            console.log(err || 'connect-mongodb setup ok');
+        }
+        )
+    }));
 
 app.use(passport.initialize());
 app.use(passport.session());
