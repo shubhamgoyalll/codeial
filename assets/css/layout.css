@@ -1,0 +1,7 @@
+body {
+  margin: 0; }
+  body #layout-main {
+    height: 100%; }
+  body #posts-list-container {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px; }

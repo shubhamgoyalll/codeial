@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #calc{
+            background-color: grey;
+            text-align: center;
+        }
+        .btn{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="calc">
+        <h4>Calculator</h4>
+        <br><br>
+        Type Value 1:
+        <input type="number" id="v1"><br>
+        Type Value 2:
+        <input type="number" id="v2">
+        <br>
+        <button id='add' class='btn'>+</button>
+        <button id='sub' class='btn'>-</button>
+        <button id='multi' class='btn'>*</button>
+        <button id='divide' class='btn'>/</button>
+        <br><br>
+        Result:
+        <span id='result'></span>
+    </div>
+    <script>
+        var a = document.getElementById('v1');
+        var b = document.getElementById('v2');
+        var result
+        document.getElementById('add').addEventListener('click',function(){
+            var a = parseInt(document.getElementById('v1').value)
+            var b = parseInt(document.getElementById('v2').value)
+
+            document.getElementById('result').innerText = result
+        });
+        document.getElementById('sub').addEventListener('click',function(){
+
+            var a = parseInt(document.getElementById('v1').value)
+            var b = parseInt(document.getElementById('v2').value)
+            result = a - b 
+            document.getElementById('result').innerText = result
+        });
+        document.getElementById('multi').addEventListener('click',function(){
+            var a = parseInt(document.getElementById('v1').value)
+            var b = parseInt(document.getElementById('v2').value)
+            result = a * b 
+            document.getElementById('result').innerText = result});
+        document.getElementById('divide').addEventListener('click',function(){
+        var a = parseInt(document.getElementById('v1').value)
+            var b = parseInt(document.getElementById('v2').value)
+            if(b==0){console.log('Error');return;}
+            result = a/b 
+            document.getElementById('result').innerText = result});
+    
+    </script>
+</body>
+</html>
