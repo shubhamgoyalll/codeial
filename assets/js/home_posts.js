@@ -1,5 +1,5 @@
 {
-    // method to submit the form data using AJAX
+    // method to submit the form data for new post using AJAX so that it does not refresh everytime
     let createPost = function(){
         let newPostForm = $('#new-post-form');
 
@@ -18,6 +18,19 @@
                     $('#posts-list-container>ul').prepend(newPost);
                     // must have space before .
                     deletePost($(' .delete-post-button', newPost));
+
+                    // call the create comment class
+                    new PostComments(data.data.post._id);
+
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post published!",
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                        
+                    }).show();
+
                 },error : function(err){
                     console.log(error.responseText);
                 }
@@ -68,6 +81,16 @@
                 url : $(deleteLink).prop('href'),
                 success : function(data){
                     $(`#post-${data.data.post_id}`).remove();
+
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post Deleted",
+                        type: 'success',
+                        layout: 'topRight',
+                        timeout: 1500
+                        
+                    }).show();
+
                 }, error : function(error){
                     console.log(error.responseText);
                 }
