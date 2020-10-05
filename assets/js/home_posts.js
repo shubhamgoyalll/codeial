@@ -16,6 +16,8 @@
                     let newPost = newPostDom(data.data.post);
                     // ul inside post list container and pre setting the post in list  
                     $('#posts-list-container>ul').prepend(newPost);
+                    // must have space before .
+                    deletePost($(' .delete-post-button', newPost));
                 },error : function(err){
                     console.log(error.responseText);
                 }
@@ -28,7 +30,7 @@
         return $(`<li id="post-${post._id}">
         <p>
          <small>
-             <a class="delete-post-button" href="/posts/destroy/${ post.id }" ><bold style="color: red;">X</bold></a>
+             <a class="delete-post-button" href="/posts/destroy/${ post._id }" ><bold style="color: red;">X</bold></a>
          </small>
 
          Post -
@@ -55,5 +57,32 @@
         </div>
      </li>`)
     }
+
+    // method to delete a post from DOM
+    let deletePost = function(deleteLink){
+        $(deleteLink).click(function(e){
+            e.preventDefault();
+
+            $.ajax({
+                type : 'get',
+                url : $(deleteLink).prop('href'),
+                success : function(data){
+                    $(`#post-${data.data.post_id}`).remove();
+                }, error : function(error){
+                    console.log(error.responseText);
+                }
+            })
+        })
+    }
+
+
+
+
+
+
+
+
+
+
     createPost();
 }

@@ -13,8 +13,10 @@ module.exports.home = async function(req,res){
     // });
 
    try{
-        //populate the user of ecch post
+    //populate the user of ecch post
    let posts = await Post.find({})
+    // to sort post in an order by date
+   .sort('-createdAt')
    .populate('user')
    .populate({
        path : 'comments',
