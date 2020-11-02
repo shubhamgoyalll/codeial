@@ -23,3 +23,6 @@ passport.use(new JWTStrategy(opts, function(jwtPayLoad, done){
 }));
 
 module.exports = passport;
+
+// have to install npm install passport-jwt
+// and for creating a token npm install jsonwebtoken
