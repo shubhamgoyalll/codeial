@@ -85,3 +85,4 @@ app.listen(port,function(err){
 // make index.js then npm init then npm install express
 // when adding cookies npm install cookie-parser
 // npm install express-session when using passport js
+// redis-server to run redis server for delayed jobs
